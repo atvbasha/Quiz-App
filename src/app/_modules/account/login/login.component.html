@@ -1,0 +1,33 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="assets/images/user.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <div>
+                <input type="text" id="login" class="fadeIn second" formControlName="username" 
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" autocomplete="off">
+                <div class="invalid-feedback">Please enter your username</div>
+            </div>
+            <div class="position-relative">
+                <input type="{{ hidePassword ? 'password' : 'text' }}" class="fadeIn third" formControlName="password" 
+                    placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="off">
+                <i *ngIf="f.password.value" [ngClass]="hidePassword ? 'bi bi-eye-slash' : 'bi bi-eye'"
+                    class="position-absolute icon" (click)="togglePassword()"></i>
+                <div class="invalid-feedback">Please enter your password</div>
+            </div>
+            <input type="submit" class="fadeIn fourth" value="Let Me In">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+
+    </div>
+</div>
