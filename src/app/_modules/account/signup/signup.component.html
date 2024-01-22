@@ -10,9 +10,14 @@
         <!-- Login Form -->
         <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
             <div>
-                <input type="text" id="login" class="fadeIn second" formControlName="username" 
-                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" autocomplete="off">
-                <div class="invalid-feedback">Please enter your username</div>
+                <input type="text" id="login" class="fadeIn second" formControlName="name" 
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name" autocomplete="off">
+                <div class="invalid-feedback">Please enter your name</div>
+            </div>
+            <div>
+                <input type="text" id="login" class="fadeIn second" formControlName="email" 
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email" autocomplete="off">
+                <div class="invalid-feedback">Please enter your email</div>
             </div>
             <div class="position-relative">
                 <input type="{{ hidePassword ? 'password' : 'text' }}" class="fadeIn third" formControlName="password" 
@@ -21,25 +26,18 @@
                     class="position-absolute icon" (click)="togglePassword()"></i>
                 <div class="invalid-feedback">Please enter your password</div>
             </div>
-            <p class="text-end" style="margin: 5px 34px 10px 20px !important">
-                <a class="underlineHover small" routerLink="/forgot-password">Forgot Password?</a>
-            </p>
-            <input type="submit" class="fadeIn fourth" value="Let Me In">
+            <input type="submit" class="fadeIn fourth" style="margin: 5px 20px 10px 20px !important" value="Create Account">
             <!-- <div class="position-relative">
                 <img src="../../../../assets/images/google-icon.svg" class="position-absolute google-icon fadeIn third" alt="google icon">
                 <input type="button" class="fadeIn fourth" value="Google Sign In" (click)="onGoogleSignIn()">
             </div> -->
-            
+            <!-- <div id="google-login-button" class="btn btn-danger" (click)="onGoogleSignIn()"></div> -->
         </form>
 
         <!-- Remind Passowrd -->
-        <!-- <div id="formFooter">
-            <a class="underlineHover" routerLink="/forgot-password">Forgot Password?</a>
-        </div> -->
         <div id="formFooter">
-            <small>Don't have an account? <a class="underlineHover" routerLink="/signup">Signup</a></small>
-            <p class="text-center text-muted small">(or)</p>
-            <div id="google-login-button" class="btn btn-danger" (click)="onGoogleSignIn()"></div>
+            Already have an account? <a class="underlineHover" routerLink="/">Login</a>
         </div>
+
     </div>
 </div>

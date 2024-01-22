@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { GoogleSignInService } from '@app/_services/google-sign-in.service';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,13 @@ export class LoginComponent implements OnInit {
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
+  clientId="262091523626-tu5ffnitduakqqanvmf6m84rbg2co5ra.apps.googleusercontent.com";
   loading = false;
   submitted = false;
   hidePassword: boolean = true;
   errMsg: any;
 
-  constructor() { }
+  constructor(private auth: GoogleSignInService) { }
 
   ngOnInit(): void {
     
@@ -41,6 +43,10 @@ export class LoginComponent implements OnInit {
   }
 
   onGoogleSignIn(){
-    alert("Yes")
+    setTimeout(()=>{this.googleAuthenticate()},50);
+  }
+
+  googleAuthenticate(){
+    this.auth.authenticateUser(this.clientId);
   }
 }
