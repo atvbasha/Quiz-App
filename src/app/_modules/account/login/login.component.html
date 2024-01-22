@@ -21,7 +21,12 @@
                     class="position-absolute icon" (click)="togglePassword()"></i>
                 <div class="invalid-feedback">Please enter your password</div>
             </div>
-            <input type="submit" class="fadeIn fourth" value="Let Me In">
+            <input type="submit" class="fadeIn fourth" style="margin: 5px 20px 10px 20px !important" value="Let Me In">
+            <!-- <div class="position-relative">
+                <img src="../../../../assets/images/google-icon.svg" class="position-absolute google-icon fadeIn third" alt="google icon">
+                <input type="button" class="fadeIn fourth" value="Google Sign In" (click)="onGoogleSignIn()">
+            </div> -->
+            <div id="google-login-button" class="btn btn-danger" (click)="onGoogleSignIn()"></div>
         </form>
 
         <!-- Remind Passowrd -->
