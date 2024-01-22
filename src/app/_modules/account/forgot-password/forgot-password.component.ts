@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from '@app/_services/alert.service';
 import { EmailService } from '@app/_services/email.service';
 @Component({
   selector: 'app-forgot-password',
@@ -16,8 +17,8 @@ export class ForgotPasswordComponent {
   hidePassword: boolean = true;
   errMsg: any;
 
-  constructor(private emailService: EmailService){}
-
+  constructor(private emailService: EmailService, private alertService: AlertService){}
+  
   ngOnInit(): void {
     
   }
@@ -37,9 +38,13 @@ export class ForgotPasswordComponent {
       return;
     }
     else{
-      this.emailService.sendEmail("Angay", "baluangayar@gmail.com", "Never regret", "Don't worry, everything will be alright").subscribe(
+      let email: any = this.profileForm?.value.email;
+      this.emailService.sendEmail("Angay", email, "Never regret", "Don't worry, everything will be alright").subscribe(
         (response: any) => {
           console.log("response: ", response)
+          if(response.status === true){
+            this.alertService.success("Email sent successfully!", "EMAIL");
+          }
           console.log('Email sent successfully!');
         },
         (error: any) => {

@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
 import { QuizComponent } from '@app/_modules/quiz/quiz.component';
 import { AccountModule } from './_modules/account/account.module';
 import { EmailService } from './_services/email.service';
+import { AlertComponent } from './_modules/common/alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuizComponent
+    QuizComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
